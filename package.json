@@ -14,7 +14,8 @@
     "babel-plugin-react-compiler": "^0.0.0-experimental-938cd9a-20240601",
     "next": "^15.4.0-canary.12",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "svix": "^1.64.1"
   },
   "devDependencies": {
     "@types/node": "^20",
