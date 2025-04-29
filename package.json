@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.18.0",
+    "@prisma/client": "^6.6.0",
     "babel-plugin-react-compiler": "^0.0.0-experimental-938cd9a-20240601",
     "next": "^15.4.0-canary.12",
     "react": "^19.1.0",
@@ -22,6 +23,7 @@
     "eslint": "^8",
     "eslint-config-next": "^15",
     "postcss": "^8",
+    "prisma": "^6.6.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
