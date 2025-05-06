@@ -4,7 +4,10 @@ import RightMenu from "@/components/rightMenu/RightMenu";
 import prisma from "@/lib/client";
 import Image from "next/image";
 
-const ProfilePage = async ({ params }: { params: { username: string } }) => {
+const ProfilePage = async (props: {
+  params: Promise<{ username: string }>;
+}) => {
+  const params = await props.params;
   const username = params.username;
   const user = await prisma.user.findFirst({
     where: {
