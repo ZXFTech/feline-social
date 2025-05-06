@@ -1,4 +1,4 @@
-import prisma from "@/lib/clinet";
+import prisma from "@/lib/client";
 import { verifyWebhook } from "@clerk/nextjs/webhooks";
 
 export async function POST(req: Request) {
