@@ -12,13 +12,41 @@ const FriendRequestList = ({ requests }: { requests: RequestWithUser[] }) => {
         <div key={item.id} className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Image
-              src="https://images.pexels.com/photos/31659583/pexels-photo-31659583.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+              src={item.sender.avatar || "./noAvatar.png"}
               alt=""
               width={16}
               height={16}
               className="w-10 h-10 rounded-full object-cover"
             />
-            <span>Sary</span>
+            <span>
+              {item.sender.name && item.sender.surname
+                ? item.sender.name + " " + item.sender.surname
+                : item.sender.username}
+            </span>
+          </div>
+          <div className="flex gap-3 justify-end">
+            <form action="">
+              <button>
+                <Image
+                  src="/accept.png"
+                  alt=""
+                  width={20}
+                  height={20}
+                  className="cursor-pointer"
+                />
+              </button>
+            </form>
+            <form action="">
+              <button>
+                <Image
+                  src="/reject.png"
+                  alt=""
+                  width={20}
+                  height={20}
+                  className="cursor-pointer"
+                />
+              </button>
+            </form>
           </div>
         </div>
       ))}
