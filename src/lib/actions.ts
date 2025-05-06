@@ -40,7 +40,7 @@ export const switchFollow = async (userId: string) => {
       } else {
         await prisma.followRequest.create({
           data: {
-            senderId: currentUserId!,
+            senderId: currentUserId,
             receiverId: userId,
           },
         });
