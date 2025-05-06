@@ -52,9 +52,13 @@ const UserInfoCard = async ({ user }: { user: User }) => {
       {/* TOP */}
       <div className="flex justify-between items-center font-medium">
         <span className="text-gray-500">User Information</span>
-        <Link href="/" className="text-blue-500 text-xs">
-          See all
-        </Link>
+        {currentUserId === user.id ? (
+          <div></div>
+        ) : (
+          <Link href="/" className="text-blue-500 text-xs">
+            See all
+          </Link>
+        )}
       </div>
       <div className="flex flex-col gap-4 text-gray-500">
         <div className="flex items-center gap-2">
@@ -104,13 +108,14 @@ const UserInfoCard = async ({ user }: { user: User }) => {
             <span>{formattedDate}</span>
           </div>
         </div>
-        <UserInfoCardInteraction
-          userId={user.id}
-          currentUserId={currentUserId!}
-          isBlocked={isUserBlocked}
-          isFollowing={isFollowing}
-          isFollowingSent={isFollowingSent}
-        />
+        {currentUserId && user.id !== currentUserId && (
+          <UserInfoCardInteraction
+            userId={user.id}
+            isBlocked={isUserBlocked}
+            isFollowing={isFollowing}
+            isFollowingSent={isFollowingSent}
+          />
+        )}
       </div>
     </div>
   );
