@@ -1,9 +1,31 @@
-import Feed from "@/components/Feed";
-import LeftMenu from "@/components/LeftMenu";
-import RightMenu from "@/components/RightMenu";
+import Feed from "@/components/feed/Feed";
+import LeftMenu from "@/components/leftMenu/LeftMenu";
+import RightMenu from "@/components/rightMenu/RightMenu";
+import prisma from "@/lib/client";
 import Image from "next/image";
 
-const ProfilePage = () => {
+const ProfilePage = async ({ params }: { params: { username: string } }) => {
+  const username = params.username;
+  const user = await prisma.user.findFirst({
+    where: {
+      username,
+    },
+    include: {
+      _count: {
+        select: {
+          followers: true,
+          followings: true,
+          posts: true,
+        },
+      },
+    },
+  });
+
+  if (!user) {
+    return (
+      <div className="h-[100%] w-[full] self-center">Profile not found!</div>
+    );
+  }
   return (
     <div className="flex gap-6 pt-6">
       <div className="hidden xl:block w-[20%]">
@@ -47,7 +69,7 @@ const ProfilePage = () => {
         </div>
       </div>
       <div className="hidden lg:block w-[30%]">
-        <RightMenu userId="1" />
+        <RightMenu user={user} />
       </div>
     </div>
   );
